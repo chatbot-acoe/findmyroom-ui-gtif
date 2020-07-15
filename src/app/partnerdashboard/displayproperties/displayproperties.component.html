@@ -1,0 +1,110 @@
+<ngx-spinner bdColor="rgba(255,255,255, 0.8)" size="large" color="#008b8b" type="ball-beat">
+    <p>loading please wait....</p>
+</ngx-spinner>
+
+<div class="container" style="margin-left: 0;">
+  <span *ngFor="let f of flats">
+      <div class="card">
+          <div class="container">
+              <div class="row">
+                  <div class="col" style="background-color: gainsboro">
+                      <strong style="font-size: 30px; text-transform: uppercase" >{{f.flatName}}</strong>
+                  </div>
+              </div>
+              <div class="row" style="text-align: center">
+                      <table class="table table-bordered" style="width:100%">
+                              <tr>
+                                <th><strong>&#x20b9;{{f.flatPrice}}</strong></th>
+                                <th style="text-transform: uppercase"><strong>{{f.flatCity}}</strong></th>
+                                <th style="text-transform: uppercase"><strong>{{f.flatLocation}}</strong></th>
+                              </tr>
+                            </table>
+              </div>
+              <div class="row">
+                  <div class="col-md-5">
+      <img class="card-img-top" src="data:image/jpeg;base64,{{f.pic1}}" alt="Card image cap" style="width: 100%; padding-top: 15px">
+                  </div>
+                  <div class="col-md-6">
+                      <div class="row" style="text-align: center; padding-top: 10%">
+                              <table class="table table-bordered">
+                                  <tbody>
+                                      <tr style="height: 70px;">
+                                        <th><span class="badge badge-success"> {{f.bestRating}}&nbsp;<i class="fa fa-star" aria-hidden="true"></i></span></th>
+  <th style="text-transform: uppercase">{{f.flatRooms}}</th>
+  </tr>
+  <tr style="height: 70px">
+    <th style="text-transform: uppercase">{{f.flatArea}}</th>
+    <th style="text-transform: uppercase"><strong>OwnerName : </strong>{{f.ownerName}}</th>
+  </tr>
+  </tbody>
+  </table>
+  <table class="table" style="border-color: white">
+    <tbody>
+      <tr>
+        <td> <a (click)='deleteFlat(f.id)' class="btn btn-warning" style="width: 100%"><i class="fa fa-id-card" aria-hidden="true"></i>&nbsp;Delete</a></td>
+        <td> <a class="btn btn-info" (click)="updateFlat(f.id)" style="width: 100%"><i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;Update</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<br>
+</span>
+<div>
+  <span *ngFor="let p of pgs">
+                <div class="card">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col" style="background-color: gainsboro">
+                                <strong style="font-size: 30px; text-transform: uppercase">{{p.pgName}}</strong>
+                            </div>
+                        </div>
+                        <div class="row" style="text-align: center">
+                                <table style="width:100%">
+                                        <tr>
+                                          <th><strong>&#x20b9;{{p.pgPrice}}</strong></th>
+                                          <th style="text-transform: uppercase"><strong>{{p.pgCity}}</strong></th>
+                                          <th style="text-transform: uppercase"><strong>{{p.pgLocation}}</strong></th>
+                                        </tr>
+                                      </table>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5">
+                <img class="card-img-top" src="data:image/jpeg;base64,{{p.pic1}}" alt="Card image cap" style="width: 100%; padding-top: 15px">
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row" style="text-align: center; padding-top: 10%">
+                                        <table class="table table-bordered">
+                                            <tbody>
+                                                <tr style="height: 70px;">
+                                                  <th><span class="badge badge-success"> {{p.pgRating}}&nbsp;<i class="fa fa-star" aria-hidden="true"></i></span></th>
+  <th style="text-transform: uppercase">{{p.pgType}}</th>
+  </tr>
+  <tr style="height: 70px">
+    <th style="text-transform: uppercase">one sharing <i class="fa fa-bed"></i> : {{p.oneSharingBeds}}<br> two sharing <i class="fa fa-bed"></i> : {{p.twoSharingBeds}}</th>
+    <th style="text-transform: uppercase"><strong>Owner : </strong>{{p.ownerName}}</th>
+  </tr>
+  </tbody>
+  </table>
+  <table class="table" style="border-color: white">
+    <tbody>
+      <tr>
+        <td> <a (click)="deletePg(p.pgID)" class="btn btn-danger" style="width: 100%">&nbsp;Delete</a></td>
+        <td> <a class="btn btn-warning" (click)="updatePg(p.pgID)" routerLink="/partnerdashboard/updatepgproperty" style="width: 100%">&nbsp;Update</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<br>
+</span>
+</div>
+<h1 *ngIf="count==0&&datafetched" style="height:14em; text-align: center;margin-top: 30%">Sorry No FLATs are there to update or all are booked</h1>
+<h1 *ngIf="pgs==null&&datafetched1" style="height:14em; text-align: center; margin-top: 30%">Sorry no PGs are there to display</h1>
+</div>

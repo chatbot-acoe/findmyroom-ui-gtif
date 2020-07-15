@@ -1,0 +1,32 @@
+
+<div class="row" style="margin-top:50px" >
+
+    <div class="col-md-3">
+        <div >
+  <div style="width:40%;margin-left:32%;margin-top:7%;margin-bottom:6%">
+    <img src="/assets/profileimg.png">
+  </div>
+  <div class="list-group list-group-flush">
+    <a routerLink="/partnerdashboard" (click)="location()" class="list-group-item list-group-item-action waves-effect">
+      <i class="fa fa-user mr-3"></i>profile</a>
+    <a routerLink="/partnerdashboard/editprofile" class="list-group-item list-group-item-action waves-effect">
+       <i class="fa fa-user mr-3"></i>Editprofile</a>
+    <a routerLink="/partnerdashboard/changepassword" class="list-group-item list-group-item-action waves-effect">
+       <i class="fa fa-edit mr-3"></i>changepassword</a>
+    <a routerLink="/partnerdashboard/addproperty" class="list-group-item list-group-item-action waves-effect">
+        <i class="fa fa-plus mr-3"></i>Add Property</a>
+    <a type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo" class="list-group-item list-group-item-action waves-effect"><i class="fa fa-edit mr-3"></i>Update property</a>
+    <div id="demo" class="collapse">
+      <a (click)='getFlats()' class="list-group-item list-group-item-action waves-effect">
+                  <i class="fa fa-edit mr-3"></i>Flat</a>
+      <a (click)='getPgs()' class="list-group-item list-group-item-action waves-effect">
+                    <i class="fa fa-edit mr-3"></i>Pg</a>
+    </div>
+
+  </div>
+</div>
+    </div>
+    <div class="col-md-8">
+<router-outlet></router-outlet>
+    </div>
+</div>

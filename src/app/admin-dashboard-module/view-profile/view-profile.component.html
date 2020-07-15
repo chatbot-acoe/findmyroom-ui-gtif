@@ -1,0 +1,42 @@
+<ngx-spinner bdColor="rgba(255,255,255, 0.8)" size="large" color="#008b8b" type="ball-beat">
+    <p>loading please wait....</p>
+</ngx-spinner>
+
+   <div class="partnerdetails" style="margin-top: 13%">
+      <ul *ngIf="partnerData">
+        <ul *ngFor="let p of partnerData">
+            <div class="card testimonial-card" style="margin-top:6%;margin-right:30%;">
+                <div class="card-up gradient-card-header aqua-gradient ">
+                 <div class="eMail" style="margin-left:12%;margin-top:5%" >Email:&nbsp;&nbsp;&nbsp; {{p.userEmail}} <div class="verifyHtml" *ngIf="p.verified">Verified%</div>
+                 </div>
+                 
+       
+                 <table style="width:100%;margin-top:4%;margin-bottom:6%">
+                 
+                    <tr>
+                       
+                        <th>&nbsp;&nbsp;&nbsp; FirstName :  &nbsp;&nbsp;&nbsp;{{p.userFirstName}}</th>
+                        <th>LastName :  &nbsp;&nbsp;&nbsp;{{p.userLastName}}</th> 
+                      </tr>
+                      
+                      <tr>
+                          <th> &nbsp;&nbsp;&nbsp; Mobile :  &nbsp;&nbsp;&nbsp;{{p.userPhone}}</th>
+                          <th>City :  &nbsp;&nbsp;&nbsp;{{p.userCity}}</th> 
+                        </tr>
+                        <tr>
+                            <th> &nbsp;&nbsp;&nbsp; Street :  &nbsp;&nbsp;&nbsp;{{p.userStreet}}</th>
+                            <th>Postal Code :  &nbsp;&nbsp;&nbsp;{{p.postalCode}}</th> 
+                          </tr>
+                        
+                 </table>
+                 
+               
+            </div>
+           <p> &nbsp;&nbsp;&nbsp;  <button type="button" class="btn btn-danger" (click)="removepartner(p.userId)"><i class="fa fa-window-close"> remove</i></button> 
+            &nbsp;&nbsp;&nbsp; <button *ngIf = "verifycheck(p.verified)"  type="button" class="btn btn-success"  (click)="verifypartner(p.userId)"><i class="fa fa-check"> verify</i></button>
+           </p> 
+            </div>
+          </ul>
+        </ul>
+   </div>
+   

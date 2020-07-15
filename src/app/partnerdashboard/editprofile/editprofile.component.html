@@ -1,0 +1,130 @@
+<nav aria-label="breadcrumb" style="padding-top: 5%; padding-left: 20%">
+  <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/partnerdashboard/profile">profile</a></li>
+    <li class="breadcrumb-item"><a routerLink="/partnerdashboard/changepassword">changepassword</a></li>
+    <li class="breadcrumb-item"><a routerLink="/partnerdashboard/addproperty">addproperty</a></li>
+    <li class="breadcrumb-item"><a routerLink="/partnerdashboard/editproperty">updateproperty</a></li>
+    <li class="breadcrumb-item active">editprofile</li>
+  </ol>
+</nav>
+<div class="card testimonial-card">
+  <div class="container" style="width: 80%; margin-left:9%; margin-top:9%">
+  <form  [formGroup]='editForm'  (ngSubmit)="editprofile($event)" >
+   <div>
+      Contact Number:<br>
+    <input type="text" value="{{user.userPhone}}"  formControlName='Phn' id="Phn" name="Phn">
+
+    <div *ngIf="editForm.controls['Phn'].touched && !editForm.controls['Phn'].valid">  
+        <span *ngIf="editForm.controls['Phn'].hasError('required') ">
+            <div class="validator">  
+                <h6>Contact number is required </h6>
+            </div> 
+            </span>  
+            <span *ngIf="editForm.controls['Phn'].hasError('minlength') "> 
+                <div class="validator">  
+                    <h6> min length should be 10    </h6>
+                </div> 
+            </span>  
+            <span *ngIf="editForm.controls['Phn'].hasError('maxlength') ">
+                <div class="validator">  
+                    <h6>  max length should be 10     </h6>
+                </div>  
+        </span>  
+        <span *ngIf="editForm.controls['Phn'].hasError('pattern') ">
+              <div class="validator">
+                  <h6>  invalid phone number   </h6>
+              </div>
+      </span> 
+    </div> 
+   </div>
+
+   <div>
+    City:<br>
+    <input type="text" value="{{user.userCity}}" formControlName='city' id="city" name="city" >
+    <div *ngIf="editForm.controls['city'].touched && !editForm.controls['city'].valid">  
+        <span *ngIf="editForm.controls['city'].hasError('required') "> 
+            <div class="validator">  
+                <h6>  city is required</h6>
+            </div>  
+            </span>  
+            <span *ngIf="editForm.controls['city'].hasError('minlength') "> 
+                  <div class="validator">  
+                      <h6> min length should be 3    </h6>
+                  </div> 
+              </span>  
+              <span *ngIf="editForm.controls['city'].hasError('maxlength') ">
+                  <div class="validator">  
+                      <h6>  max length shuld be 50 digits</h6>
+                  </div>  
+          </span>  
+          <span *ngIf="editForm.controls['city'].hasError('pattern') ">
+              <div class="validator">
+                  <h6>  invalid city  </h6>
+              </div>
+      </span> 
+    </div>
+   </div>
+
+   <div>
+    Street:<br>
+    <input type="text" value = "{{user.userStreet}}"  formControlName='street' id="street" name="street" placeholder="   location">
+    <div *ngIf="editForm.controls['street'].touched && !editForm.controls['street'].valid">  
+        <span *ngIf="editForm.controls['street'].hasError('required') ">  
+            <div class="validator">  
+                <h6> Street is required </h6>
+            </div>  
+            </span>   
+          <span *ngIf="editForm.controls['street'].hasError('minlength') "> 
+                <div class="validator">  
+                    <h6>  min length should be 5 </h6>
+                </div> 
+            </span>  
+            <span *ngIf="editForm.controls['street'].hasError('maxlength') ">
+                <div class="validator">   
+                    <h6>  max length shuld be 50 digits</h6>
+                </div>  
+        </span>  
+        <span *ngIf="editForm.controls['street'].hasError('pattern') ">
+          <div class="validator">
+              <h6>  invalid street   </h6>
+          </div>
+  </span>
+
+    </div>
+   </div>
+
+
+   <div>
+    Postal Code:<br>
+    <input type="text" value ="{{user.postalCode}}"  formControlName='postalcode' id="postalcode" name="postalcode" placeholder="postal code">
+
+    <div *ngIf="editForm.controls['postalcode'].touched && !editForm.controls['postalcode'].valid">  
+        <span *ngIf="editForm.controls['postalcode'].hasError('required') ">  
+            <div class="validator">  
+                <h6> postal code is required </h6>
+            </div>  
+            </span> 
+            <span *ngIf="editForm.controls['postalcode'].hasError('minlength') "> 
+                  <div class="validator">  
+                      <h6>   min length should be 6    </h6>
+                  </div> 
+              </span>  
+              <span *ngIf="editForm.controls['postalcode'].hasError('maxlength') ">
+                  <div class="validator">  
+                      <h6>   max length should be 6   </h6>
+                  </div>  
+          </span> 
+          <span *ngIf="editForm.controls['postalcode'].hasError('pattern') ">
+                  <div class="validator">
+                      <h6>   invalid postal code   </h6>
+                  </div>
+          </span>   
+    </div>
+
+
+  </div>
+    <input type="submit" [disabled]='!editForm.valid' value="submit"style="margin:7px;"  >
+  </form>
+  
+</div>
+</div>

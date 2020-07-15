@@ -1,0 +1,78 @@
+
+<ngx-spinner bdColor="rgba(255,255,255, 0.8)" size="large" color="#008b8b" type="ball-beat">
+        <p>loading please wait....</p>
+</ngx-spinner>
+
+<div>
+        <span class = "pgrentdto">
+                <span *ngFor="let pg of flatbuy">
+                        <div class="card">
+                                <div class="container">
+                                    <div><h1>FLAT</h1></div>
+                                    <div class="row">
+                                        <div class="col" style="background-color: gainsboro">
+                                            <strong style="font-size: 30px; text-transform: uppercase" >{{pg.flatName}}</strong>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-5">
+                            <img class="card-img-top" src="../../../assets/img/flat.jpg" alt="Card image cap" style="width: 100%; padding-top: 15px">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="row" style="text-align: center; padding-top: 10%">
+                                                    <table class="table table-bordered">
+                                                        <tbody>
+                                                            <tr style="height: 60px">
+                                                                <th style="text-transform: uppercase"><b>Buyed On :</b> {{pg.buyedDate}}</th>
+                                                                <th><span>Price:</span><strong>&#x20b9;{{pg.price}}</strong></th>
+                                                                <th style="text-transform: uppercase"><strong>OwnerName : </strong>{{pg.ownerName}}</th>
+                                                            </tr>
+                                                        </tbody>
+                                                        </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                        </span>
+
+                    </span>
+</div>
+<div>
+        <span class = "flatbuydto">
+                <span *ngFor="let pg of pgrent">
+                        <div class="card">
+                                <div class="container">
+                                    <div> <h1> PG</h1></div>
+                                    <div class="row">
+                                        <div class="col" style="background-color: gainsboro">
+                                            <strong style="font-size: 30px; text-transform: uppercase" >{{pg.pgName}}</strong>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-5">
+                            <img class="card-img-top" src="../../../assets/img/flat.jpg" alt="Card image cap" style="width: 100%; padding-top: 15px">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="row" style="text-align: center; padding-top: 10%">
+                                                    <table class="table table-bordered">
+                                                        <tbody>
+                                                            <tr style="height: 60px">
+                                                                <th style="text-transform: uppercase"><b> Booked On :</b>{{pg.buyedDate}}</th>
+                                                                <th><span>Price:</span><strong>&#x20b9;{{pg.price}}</strong></th>
+                                                                <th style="text-transform: uppercase"><strong>OwnerName : </strong>{{pg.ownerName}}</th>
+                                                            </tr>
+                                                        </tbody>
+                                                        </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                        </span>
+                    </span>
+                    <h1 *ngIf="count==0&&datafetched&&count1==0&&datafetched1" style="height:14em; text-align: center;margin-top: 30%">No booking History</h1>
+                    <!-- <h1 *ngIf="" style="height:14em; text-align: center; margin-top: 30%">No booking History</h1> -->
+</div>

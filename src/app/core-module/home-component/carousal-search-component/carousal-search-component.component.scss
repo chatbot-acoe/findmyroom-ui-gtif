@@ -1,0 +1,23 @@
+
+.banner{
+  margin-top: -1rem;
+  height: 34rem;
+
+ }
+
+ @media (max-width: 740px) {
+  .banner
+   {
+    height: 100vh;
+
+  }
+}
+
+@media (min-width: 800px) and (max-width: 850px) {
+
+  .banner {
+    height: 100vh;
+  }
+}
+
+

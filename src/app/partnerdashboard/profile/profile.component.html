@@ -1,0 +1,58 @@
+<hr>
+<div class="card testimonial-card"> 
+    
+<div class="container" style="margin-left:0%; margin-top:5%;">
+          
+   <div class="welcome" style="margin-left:38%;" >
+       <h5>Welcome  {{user.userFirstName}} !</h5>
+   </div>             
+   
+  <br>
+ 
+  <ul class="list-group list-group-flush">
+        <li class="list-group-item" >
+            <div class="middle">  
+   <h6>First Name : &nbsp;&nbsp;&nbsp;{{user.userFirstName}}  </h6> 
+            </div>
+               
+        </li>
+        <li class="list-group-item">
+                <div class="middle">  
+ <h6>Last Name : &nbsp;&nbsp;&nbsp;{{user.userLastName}}  </h6> 
+                </div>
+        </li>
+        <li class="list-group-item">
+                <div class="middle">  
+  <h6>Contact No : &nbsp;&nbsp;&nbsp;{{user. userPhone}} </h6> 
+                </div>
+        </li>
+    
+        <li class="list-group-item">
+                <div class="middle">  
+        <h6>Email Id :  &nbsp;&nbsp;&nbsp;{{user. userEmail}}</h6>
+                </div>
+        </li>
+        <li class="list-group-item">
+
+                <div class="middle">  
+ <h6>City : &nbsp;&nbsp;&nbsp;{{user.userCity}}</h6> 
+                </div>
+        </li>
+        <li class="list-group-item">
+                <div class="middle">  
+             <h6>Street :  &nbsp;&nbsp;&nbsp;{{user.userStreet}} </h6>
+                </div>
+        </li>
+        <li class="list-group-item">
+
+                <div class="middle" >  
+                <h6>Postal Code :  &nbsp;&nbsp;&nbsp;{{user.postalCode}}</h6> 
+                </div>
+
+        </li>
+  </ul>  
+  <br>
+   </div>  
+ </div>
+<br>
+<router-outlet></router-outlet>

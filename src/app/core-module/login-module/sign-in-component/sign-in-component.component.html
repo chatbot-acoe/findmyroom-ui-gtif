@@ -1,0 +1,108 @@
+<ngx-spinner bdColor="rgba(255,255,255, 0.8)" size="large" color="#008b8b" type="ball-beat">
+    <p>loading please wait....</p>
+</ngx-spinner>
+
+<div class="view full-page-intro"  style="height: 100%;background-image: url('../../assets/images/slider-1.jpg'); background-repeat: no-repeat; background-size: cover;">
+    <div style="margin-top: 100px;">
+        <div class="row">
+            <div class="col-md-8">
+                <h5 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;font-style: italic">Housing is absolutely essential to human flourishing. <br> Without stable shelter, it all falls apart.</h5><br>
+
+                <h5 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;font-style: italic">As an owner you can list your property in a few minutes. <br> Just fill out our super simple form. <br> Your
+                    property will go live after verification.</h5>
+            </div>
+            <div class="col-md-4">
+                <mdb-card style="margin-right: 40px;opacity: 0.8;margin-bottom:200px;">
+                    <div class="row" style="padding-top: 10px;align-content: center;">
+                        <div class="col-md-4" style="height: 100px;width: 70px;">
+                            <img src="../../../../assets/img/logo.png" style="width:100%;height: 70%;" alt="">
+                        </div>
+                        <div class="col-md-8">
+                            <h1 style="color: darkcyan;">Login</h1>
+                        </div>
+                    </div>
+                    <mdb-card-body style="padding-top: 0px;">
+
+                        <form [formGroup]="loginForm" (ngSubmit)="login()">
+                            <div class="md-form">
+                                <i class="fa fa-envelope prefix"></i>
+                                <input mdbInputDirective type="text" id="loginformEmail" formControlName="userEmail" class="form-control">
+                                <label for="loginformEmail" style="color:black;font-weight: 520;">E-mail</label>
+                                <div class="errors" *ngIf="loginForm.get('userEmail').touched && loginForm.get('userEmail').hasError('required')">This field is required!</div>
+                                <div class="errors" *ngIf="loginForm.get('userEmail').touched && loginForm.get('userEmail').hasError('pattern')">Email must follow name@domain.com</div>
+                            </div>
+
+                            <div class="md-form">
+                                <i class="fa fa-lock prefix"></i>
+                                <input mdbInputDirective type="password" id="loginformPassword" formControlName="userPassword" class="form-control">
+                                <label for="loginformPassword" style="color:black;font-weight: 520;">Password</label>
+                                <div class="errors" *ngIf="loginForm.get('userPassword').touched && loginForm.get('userPassword').hasError('required')">This field is required</div>
+                                <div class="errors" *ngIf="loginForm.get('userPassword').touched && loginForm.get('userPassword').hasError('minlength')">MinLength(6)</div>
+                                <!-- <div class = "errors" *ngIf="loginForm.get('userPassword').touched && loginForm.get('userPassword').hasError('pattern')">Password should contain a (a-z,0-9,A-Z) min(6) max(15) allowed(@$!%*#?)!</div> -->
+                            </div>
+
+                            <div class="d-flex justify-content-around">
+                                <div style="display:block;float: right;padding-bottom: 20px;">
+                                    <!-- Forgot password -->
+                                    <a style="color:darkcyan;font-weight: 520;" data-toggle="modal" data-target="#forgotform">Forgot password?</a>
+
+
+
+                                </div>
+                            </div>
+
+
+                            <!-- Sign in button -->
+                            <button mdbBtn color="info" style="opacity: 1.0;" class="btn btn-default" [disabled]='!loginForm.valid' block="true" type="submit">Sign in</button>
+
+                            <!-- Register -->
+                            <p style="padding: 20px;font-weight: 520;">Not a member?
+                                <a style="color:darkcyan;font-weight: 520;" data-toggle="modal" data-target="#signupform">Register</a>
+                            </p>
+                        </form>
+                    </mdb-card-body>
+                </mdb-card>
+                <!-- Forgot Password Modal -->
+                <div class="modal fade" id="forgotform" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header text-center">
+                                <h4 class="modal-title w-100 font-weight-bold" style="color: darkcyan;font-weight: 520;">Forgot password Form</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                     </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="md-form">
+                                    <form [formGroup]="forgotForm" (ngSubmit)="forgot()">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="md-form">
+                                                    <p> Email </p>
+                                                    <!-- <i class="fa fa-id-card" aria-hidden="true"></i> -->
+                                                    <input mdbInputDirective type="text" localid="uEmailId" [(ngModel)]="emailid" formControlName="userEmailId" class="form-control">
+                                                    <!-- <label for="uEmailId">Email Id</label> -->
+                                                    
+                                                    <div class="errors" *ngIf="forgotForm.get('userEmailId').touched && forgotForm.get('userEmailId').hasError('required')">This field is required!</div>
+                                                    <div class="errors" *ngIf="forgotForm.get('userEmailId').hasError('pattern')">Email must follow name@domain.com</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="modal-footer" style="margin-top: 40px;">
+                                            <div class="col-md-4">
+                                                <button style="float: right; " mdbBtn color="info" class="btn btn-default" [disabled]='!forgotForm.valid' block="true" type="submit">Submit</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               <!-- Close of Forgot Password Modal  -->
+            </div>
+            <app-sign-up-component></app-sign-up-component>
+        </div>
+    </div>
+</div>

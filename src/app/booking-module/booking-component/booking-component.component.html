@@ -1,0 +1,508 @@
+<span *ngIf = "flatdet">
+<div class = "container"style="padding-top: 10%">
+  <div class="col-md-4" >
+    
+              <!-- Heading -->
+              <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-muted">Property Details</span>
+               </h4>
+    
+              <!-- Cart -->
+              <ul class="list-group mb-3 z-depth-1">
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                  <div>
+                    <h6 class="my-0">Property Name</h6>
+                    <b>{{flat.flatName }}</b>
+                  </div>
+                  
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                  <div>
+                    <h6 class="my-0">Property Location</h6>
+                    <b>{{flat.flatLocation}}</b>
+                  </div>
+                  
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                  <div>
+                    <h6 class="my-0">Price (10% Discount)</h6>
+                    <b>{{flat.flatPrice - (flat.flatPrice*0.1)}}</b>
+                  </div>
+                  
+                </li>
+              </ul>
+  </div>
+ <!--Accordion wrapper-->
+<div class="accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
+    
+      <!-- Accordion card -->
+      <div class="card">
+    
+        <!-- Card header -->
+        <div class="card-header" role="tab" id="headingOne">
+          <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <h5 class="mb-0">
+              Credit Card 
+            </h5>
+          </a>
+        </div>
+    
+        
+        <!-- Card body -->
+        <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordionEx">
+            <mdb-card-body>                
+          <form [formGroup]="paymentForm" (ngSubmit)="buyflat()"> 
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col">
+                            <label for="paymentFormnamee" style="color:black;font-weight: 520;">Name on Card</label>
+                            <input type="text" id="paymentFormnamee" formControlName="nameoncard" class="form-control">
+                            <div class="errors" *ngIf="paymentForm.get('nameoncard').touched && paymentForm.get('nameoncard').hasError('required')">Enter Name!</div>
+                            <div class="errors" *ngIf="paymentForm.get('nameoncard').touched && paymentForm.get('nameoncard').hasError('pattern')">Name Entered is not correct</div>  
+                        </div> 
+                          <div class="col">
+                        <label for="paymentFormnumberr" style="color:black;font-weight: 520;">Card Number</label>
+                        <input type="text" id="paymentFormnumberr" formControlName="cardnumber" class="form-control">
+                        <div class="errors" *ngIf="paymentForm.get('cardnumber').touched && paymentForm.get('cardnumber').hasError('required')">Enter Card Number!</div>
+                        <div class="errors" *ngIf="paymentForm.get('cardnumber').touched && paymentForm.get('cardnumber').hasError('pattern')">Card Number Entered is not correct </div>   
+                          </div>
+                        </div>
+                        <div class="row">
+                            
+                            <div class="col-md-3"><br>
+                    <label for="paymentFormexpiryy" style="color:black;font-weight: 520;">Expiry Date (MM/YY format)</label>
+                    <input type="text" id="paymentFormexpiryy" formControlName="expirydate" class="form-control">
+                    <div class="errors" *ngIf="paymentForm.get('expirydate').touched && paymentForm.get('expirydate').hasError('required')">Enter Expiry Date!</div>
+                    <div class="errors" *ngIf="paymentForm.get('expirydate').touched && paymentForm.get('expirydate').hasError('pattern')">Expiry Date Not Correct</div>   
+                            </div>
+                            <div class="col-md-3">
+                              </div>
+                            <div class="col-md-3">
+                              <br>
+                <label for="paymentFormCvvv" style="color:black;font-weight: 520;">Cvv</label><br>
+                <input type="password" id="paymentFormCvvv" formControlName="cvv" class="form-control">
+                <div class="errors" *ngIf="paymentForm.get('cvv').touched && paymentForm.get('cvv').hasError('required')">Enter Cvv!</div>
+                <div class="errors" *ngIf="paymentForm.get('cvv').touched && paymentForm.get('cvv').hasError('pattern')">Cvv Not Correct</div>   
+                            </div>
+                        </div>
+         </div>
+                     <button mdbBtn color="info" style="opacity: 1.0;" class="btn btn-default" [disabled]='!paymentForm.valid' block="true" type="submit">Pay Now</button>
+                     
+            </form>
+            </mdb-card-body>
+        </div>
+        
+      </div>
+      <!-- Accordion card -->
+    
+      <!-- Accordion card -->
+      <div class="card">
+    
+        <!-- Card header -->
+        <div class="card-header" role="tab" id="headingTwo">
+          <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            <h5 class="mb-0">
+              Debit Card 
+            </h5>
+          </a>
+        </div>
+    
+        <!-- Card body -->
+        <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordionEx">
+            <mdb-card-body>                
+                <form [formGroup]="paymentForm" (ngSubmit)="buyflat()"> 
+                    <div class="card-body">
+                        <div class="row">
+                          <div class="col">
+                              <label for="paymentFormnameee" style="color:black;font-weight: 520;">Name on Card</label>
+                              <input type="text" id="paymentFormnameee" formControlName="nameoncard" class="form-control">
+                              <div class="errors" *ngIf="paymentForm.get('nameoncard').touched && paymentForm.get('nameoncard').hasError('required')">Enter Name!</div>
+                              <div class="errors" *ngIf="paymentForm.get('nameoncard').touched && paymentForm.get('nameoncard').hasError('pattern')">Name Entered is not correct</div>  
+                          </div> 
+                            <div class="col">
+                          <label for="paymentFormnumberrr" style="color:black;font-weight: 520;">Card Number</label>
+                          <input type="text" id="paymentFormnumberrr" formControlName="cardnumber" class="form-control">
+                          <div class="errors" *ngIf="paymentForm.get('cardnumber').touched && paymentForm.get('cardnumber').hasError('required')">Enter Card Number!</div>
+                          <div class="errors" *ngIf="paymentForm.get('cardnumber').touched && paymentForm.get('cardnumber').hasError('pattern')">Card Number Entered is not correct </div>   
+                            </div>
+                          </div>
+                          <div class="row">
+                              
+                              <div class="col-md-3"><br>
+                      <label for="paymentFormexpiryyy" style="color:black;font-weight: 520;">Expiry Date (MM/YY format)</label>
+                      <input type="text" id="paymentFormexpiryyy" formControlName="expirydate" class="form-control">
+                      <div class="errors" *ngIf="paymentForm.get('expirydate').touched && paymentForm.get('expirydate').hasError('required')">Enter Expiry Date!</div>
+                      <div class="errors" *ngIf="paymentForm.get('expirydate').touched && paymentForm.get('expirydate').hasError('pattern')">Expiry Date Not Correct</div>   
+                              </div>
+                              <div class="col-md-3">
+                                </div>
+                              <div class="col-md-3">
+                                <br>
+                  <label for="paymentFormCvvvv" style="color:black;font-weight: 520;">Cvv</label><br>
+                  <input type="password" id="paymentFormCvvvv" formControlName="cvv" class="form-control">
+                  <div class="errors" *ngIf="paymentForm.get('cvv').touched && paymentForm.get('cvv').hasError('required')">Enter Cvv!</div>
+                  <div class="errors" *ngIf="paymentForm.get('cvv').touched && paymentForm.get('cvv').hasError('pattern')">Cvv Not Correct</div>   
+                              </div>
+                          </div>
+           </div>
+                       <button mdbBtn color="info" style="opacity: 1.0;" class="btn btn-default" [disabled]='!paymentForm.valid' block="true" type="submit">Pay Now</button>
+                       
+              </form>
+                  </mdb-card-body>
+        </div>
+      </div>
+      <!-- Accordion card -->
+    
+      <!-- Accordion card -->
+      <div class="card">
+    
+        <!-- Card header -->
+        <div class="card-header" role="tab" id="headingThree">
+          <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            <h5 class="mb-0">
+              Net Banking
+            </h5>
+          </a>
+        </div>
+  
+        <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordionEx">
+            <mdb-card-body>                
+                <!-- Default inline 1-->
+<div class="custom-control custom-radio custom-control-inline">
+    <input type="radio" class="custom-control-input" id="defaultInline1" checked name="inlineDefaultRadiosExample">
+    <label class="custom-control-label" for="defaultInline1">HDFC Bank</label>
+  </div>
+  
+  <!-- Default inline 2-->
+  <div class="custom-control custom-radio custom-control-inline" style="margin-left: 25%">
+   <input type="radio" class="custom-control-input" id="defaultInline2" name="inlineDefaultRadiosExample">
+    <label class="custom-control-label" for="defaultInline2">ICICI Bank</label>
+  </div>
+  
+  <!-- Default inline 3-->
+  <div class="custom-control custom-radio custom-control-inline" style="margin-left: 40%">
+    <input type="radio" class="custom-control-input" id="defaultInline3" name="inlineDefaultRadiosExample">
+    <label class="custom-control-label" for="defaultInline3">Axis Bank</label>
+  </div>
+                  <div class="d-flex justify-content-around">
+                      <div style="display:block;float: right;padding-bottom: 20px;"><br>
+                          <!-- Net Banking -->
+                          <button><a style="color:darkcyan;font-weight: 520;" data-toggle="modal" data-target="#netbankingformm">Pay Now</a></button>
+
+
+
+                      </div>
+                  </div>
+
+                  </mdb-card-body>
+              </div>
+      </div>
+      <!-- Accordion card -->
+    </div>
+    <!--/.Accordion wrapper-->
+</div>
+        <!-- Net Banking Modal -->
+        <div class="modal fade" id="netbankingformm" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h4 class="modal-title w-100 font-weight-bold" style="color: darkcyan;font-weight: 520;">Net Banking Portal</h4><br>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                             </button>
+</div>
+<h3 class="modal-title w-100 font-weight-bold" style="color:darkcyan;font-weight: 520;">Enter NetBanking Details</h3>
+
+<div class="modal-body" style="align-content: center">
+    <div class="md-form">
+        <form [formGroup]="netbankingForm" (ngSubmit)="buyflat()">
+            <div class="row">
+                    <div class="md-form">
+                        <p>Enter emailid</p>
+                        <!-- <i class="fa fa-id-card" aria-hidden="true"></i> -->
+                        <input type="text" localid="userEmailId" formControlName="userEmailId" class="form-control">
+                        <!-- <label for="uEmailId">Email Id</label> -->
+                        
+                        <div class="errors" *ngIf="netbankingForm.get('userEmailId').touched && netbankingForm.get('userEmailId').hasError('required')">Email is required!</div>
+                        <div class="errors" *ngIf="netbankingForm.get('userEmailId').hasError('pattern')">Email must follow name@domain.com</div>
+                    
+                </div>
+            </div>
+            <div class="row">
+                    <div class="md-form">
+                        <p>Enter password</p>
+                        <!-- <i class="fa fa-id-card" aria-hidden="true"></i> -->
+                        <input type="password" localid="password" formControlName="password" class="form-control">
+                        <!-- <label for="uEmailId">Email Id</label> -->
+                        
+                        <div class="errors" *ngIf="netbankingForm.get('password').touched && netbankingForm.get('password').hasError('required')">Password is required!</div>
+                        <div class="errors" *ngIf="netbankingForm.get('password').hasError('pattern')">Entered Password Is Not Correct</div>
+                  
+                </div>
+              </div>
+            <div class="modal-footer" style="margin-top: 40px;">
+                <div class="col-md-4">
+                    <button style="float: right; " mdbBtn color="info" class="btn btn-default" [disabled]='!netbankingForm.valid' block="true" type="submit">Pay Rs {{flat.flatPrice}}</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</span>
+<span *ngIf = "pgdet">
+  <div class = "container" style="padding-top: 10%">
+      <div class="col-md-4">
+          
+                    <!-- Heading -->
+                    <h4 class="d-flex justify-content-between align-items-center mb-3">
+                      <span class="text-muted">Property Details</span>
+                     </h4>
+          
+                    <!-- Cart -->
+                    <ul class="list-group mb-3 z-depth-1">
+                      <li class="list-group-item d-flex justify-content-between lh-condensed">
+                        <div>
+                          <h6 class="my-0">Property Name</h6>
+                          <b>{{pgd.pgName}}</b>
+                        </div>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between lh-condensed">
+                        <div>
+                          <h6 class="my-0">Property Location</h6>
+                          <b>{{pgd.pgLocation}}</b>
+                        </div>
+                       
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between lh-condensed">
+                        <div>
+                          <h6 class="my-0">Price(10% Discount)</h6>
+                          <b>{{pgd.pgPrice- (pgd.pgPrice*0.1)}}</b>
+                        </div>
+                        
+                      </li>
+                    </ul>
+        </div>
+    <!--Accordion wrapper-->
+<div class="accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
+    
+      <!-- Accordion card -->
+      <div class="card">
+    
+        <!-- Card header -->
+        <div class="card-header" role="tab" id="headingOne">
+          <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <h5 class="mb-0">
+              Credit Card 
+            </h5>
+          </a>
+        </div>
+    
+        <!-- Card body -->
+        <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordionEx">
+            <mdb-card-body>                
+                <form [formGroup]="paymentForm" (ngSubmit)="buypg()"> 
+                    <div class="card-body">
+                        <div class="row">
+                          <div class="col">
+                              <label for="paymentFormnamem" style="color:black;font-weight: 520;">Name on Card</label>
+                              <input type="text" id="paymentFormnamem" formControlName="nameoncard" class="form-control">
+                              <div class="errors" *ngIf="paymentForm.get('nameoncard').touched && paymentForm.get('nameoncard').hasError('required')">Enter Name!</div>
+                              <div class="errors" *ngIf="paymentForm.get('nameoncard').touched && paymentForm.get('nameoncard').hasError('pattern')">Name Entered is not correct</div>  
+                          </div> 
+                            <div class="col">
+                          <label for="paymentFormnumberm" style="color:black;font-weight: 520;">Card Number</label>
+                          <input type="text" id="paymentFormnumberm" formControlName="cardnumber" class="form-control">
+                          <div class="errors" *ngIf="paymentForm.get('cardnumber').touched && paymentForm.get('cardnumber').hasError('required')">Enter Card Number!</div>
+                          <div class="errors" *ngIf="paymentForm.get('cardnumber').touched && paymentForm.get('cardnumber').hasError('pattern')">Card Number Entered is not correct </div>   
+                            </div>
+                          </div>
+                          <div class="row">
+                              
+                              <div class="col-md-3"><br>
+                      <label for="paymentFormexpirym" style="color:black;font-weight: 520;">Expiry Date (MM/YY format)</label>
+                      <input type="text" id="paymentFormexpirym" formControlName="expirydate" class="form-control">
+                      <div class="errors" *ngIf="paymentForm.get('expirydate').touched && paymentForm.get('expirydate').hasError('required')">Enter Expiry Date!</div>
+                      <div class="errors" *ngIf="paymentForm.get('expirydate').touched && paymentForm.get('expirydate').hasError('pattern')">Expiry Date Not Correct</div>   
+                              </div>
+                              <div class="col-md-3">
+                                </div>
+                              <div class="col-md-3">
+                                <br>
+                  <label for="paymentFormCvvm" style="color:black;font-weight: 520;">Cvv</label><br>
+                  <input type="password" id="paymentFormCvvm" formControlName="cvv" class="form-control">
+                  <div class="errors" *ngIf="paymentForm.get('cvv').touched && paymentForm.get('cvv').hasError('required')">Enter Cvv!</div>
+                  <div class="errors" *ngIf="paymentForm.get('cvv').touched && paymentForm.get('cvv').hasError('pattern')">Cvv Not Correct</div>   
+                              </div>
+                          </div>
+           </div>
+  
+                           <button mdbBtn color="info" style="opacity: 1.0;" class="btn btn-default" [disabled]='!paymentForm.valid' block="true" type="submit">Pay Now</button>
+                           
+                  </form>
+                  </mdb-card-body>
+           </div>
+      </div>
+      <!-- Accordion card -->
+    
+      <!-- Accordion card -->
+      <div class="card">
+    
+        <!-- Card header -->
+        <div class="card-header" role="tab" id="headingTwo">
+          <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            <h5 class="mb-0">
+              Debit Card 
+            </h5>
+          </a>
+        </div>
+    
+        <!-- Card body -->
+        <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordionEx">
+            <mdb-card-body>                
+                <form [formGroup]="paymentForm" (ngSubmit)="buypg()"> 
+                    <div class="card-body">
+                        <div class="row">
+                          <div class="col">
+                              <label for="paymentFormnamea" style="color:black;font-weight: 520;">Name on Card</label>
+                              <input type="text" id="paymentFormnamea" formControlName="nameoncard" class="form-control">
+                              <div class="errors" *ngIf="paymentForm.get('nameoncard').touched && paymentForm.get('nameoncard').hasError('required')">Enter Name!</div>
+                              <div class="errors" *ngIf="paymentForm.get('nameoncard').touched && paymentForm.get('nameoncard').hasError('pattern')">Name Entered is not correct</div>  
+                          </div> 
+                            <div class="col">
+                          <label for="paymentFormnumbera" style="color:black;font-weight: 520;">Card Number</label>
+                          <input type="text" id="paymentFormnumbera" formControlName="cardnumber" class="form-control">
+                          <div class="errors" *ngIf="paymentForm.get('cardnumber').touched && paymentForm.get('cardnumber').hasError('required')">Enter Card Number!</div>
+                          <div class="errors" *ngIf="paymentForm.get('cardnumber').touched && paymentForm.get('cardnumber').hasError('pattern')">Card Number Entered is not correct </div>   
+                            </div>
+                          </div>
+                          <div class="row">
+                              
+                              <div class="col-md-3"><br>
+                      <label for="paymentFormexpirya" style="color:black;font-weight: 520;">Expiry Date (MM/YY format)</label>
+                      <input type="text" id="paymentFormexpirya" formControlName="expirydate" class="form-control">
+                      <div class="errors" *ngIf="paymentForm.get('expirydate').touched && paymentForm.get('expirydate').hasError('required')">Enter Expiry Date!</div>
+                      <div class="errors" *ngIf="paymentForm.get('expirydate').touched && paymentForm.get('expirydate').hasError('pattern')">Expiry Date Not Correct</div>   
+                              </div>
+                              <div class="col-md-3">
+                                </div>
+                              <div class="col-md-3">
+                                <br>
+                  <label for="paymentFormCvva" style="color:black;font-weight: 520;">Cvv</label><br>
+                  <input type="password" id="paymentFormCvva" formControlName="cvv" class="form-control">
+                  <div class="errors" *ngIf="paymentForm.get('cvv').touched && paymentForm.get('cvv').hasError('required')">Enter Cvv!</div>
+                  <div class="errors" *ngIf="paymentForm.get('cvv').touched && paymentForm.get('cvv').hasError('pattern')">Cvv Not Correct</div>   
+                              </div>
+                          </div>
+           </div>
+  
+                           <button mdbBtn color="info" style="opacity: 1.0;" class="btn btn-default" [disabled]='!paymentForm.valid' block="true" type="submit">Pay Now</button>
+                           
+                  </form>
+                  </mdb-card-body>
+        </div>
+      </div>
+      <!-- Accordion card -->
+    
+      <!-- Accordion card -->
+      <div class="card">
+    
+        <!-- Card header -->
+        <div class="card-header" role="tab" id="headingThree">
+          <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            <h5 class="mb-0">
+              Net Banking
+            </h5>
+          </a>
+        </div>
+    
+        <!-- Card body -->
+        <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordionEx">
+            <mdb-card-body>                
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" class="custom-control-input" id="defaultInline1" checked name="inlineDefaultRadiosExample" >
+                    <label class="custom-control-label" for="defaultInline1">HDFC Bank</label>
+                  </div>
+                  
+                  <!-- Default inline 2-->
+                  <div class="custom-control custom-radio custom-control-inline" style="margin-left: 25%">
+                    <input type="radio" class="custom-control-input" id="defaultInline2" name="inlineDefaultRadiosExample">
+                    <label class="custom-control-label" for="defaultInline2">ICICI Bank</label>
+                  </div>
+                  
+                  <!-- Default inline 3-->
+                  <div class="custom-control custom-radio custom-control-inline" style="margin-left: 40%">
+                    <input type="radio" class="custom-control-input" id="defaultInline3" name="inlineDefaultRadiosExample">
+                    <label class="custom-control-label" for="defaultInline3">Axis Bank</label>
+                  </div>
+                  <div class="d-flex justify-content-around">
+                      <div style="display:block;float: right;padding-bottom: 20px;">
+                          <!-- Net Banking -->
+                          <br>
+                          <button><a style="color:darkcyan;font-weight: 520;" data-toggle="modal" data-target="#netbankingform">Pay Now</a></button>
+
+
+
+                      </div>
+                  </div>
+
+                  </mdb-card-body>
+        </div>
+      </div>
+      <!-- Accordion card -->
+    </div>
+    <!--/.Accordion wrapper-->
+  </div>
+      <!-- Forgot Password Modal -->
+      <div class="modal fade" id="netbankingform" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+          <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+              <div class="modal-content">
+                  <div class="modal-header text-center">
+                      <h4 class="modal-title w-100 font-weight-bold" style="color: darkcyan;font-weight: 520;">Net Banking Portal</h4><br>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                           </button>
+</div>
+<h3 class="modal-title w-100 font-weight-bold" style="color: darkcyan;font-weight: 520;">Enter NetBanking Details</h3>
+
+<div class="modal-body">
+  <div class="md-form">
+      <form [formGroup]="netbankingForm" (ngSubmit)="buypg()">
+          <div class="row">
+                  <div class="md-form">
+                      <p>Enter emailid</p>
+                      <!-- <i class="fa fa-id-card" aria-hidden="true"></i> -->
+                      <input type="text" localid="userEmailId" formControlName="userEmailId" class="form-control">
+                      <!-- <label for="uEmailId">Email Id</label> -->
+                      
+                      <div class="errors" *ngIf="netbankingForm.get('userEmailId').touched && netbankingForm.get('userEmailId').hasError('required')">Email is required!</div>
+                      <div class="errors" *ngIf="netbankingForm.get('userEmailId').hasError('pattern')">Email must follow name@domain.com</div>
+                  
+              </div>
+          </div>
+          <div class="row">
+                  <div class="md-form">
+                      <p>Enter password</p>
+                      <!-- <i class="fa fa-id-card" aria-hidden="true"></i> -->
+                      <input type="password" localid="passsword" formControlName="password" class="form-control">
+                      <!-- <label for="uEmailId">Email Id</label> -->
+                      
+                      <div class="errors" *ngIf="netbankingForm.get('password').touched && netbankingForm.get('password').hasError('required')">Password is required!</div>
+                      <div class="errors" *ngIf="netbankingForm.get('password').hasError('pattern')">Entered Password Is Not Correct</div>
+                
+              </div>
+            </div>
+          <div class="modal-footer" style="margin-top: 40px;">
+              <div class="col-md-4">
+                  <button style="float: right; " mdbBtn color="info" class="btn btn-default" [disabled]='!netbankingForm.valid' block="true" type="submit">Pay Rs {{pgd.pgPrice}}</button>
+              </div>
+          </div>
+      </form>
+      </div>
+  </div>
+</div>
+</div>
+</div>
+</span>

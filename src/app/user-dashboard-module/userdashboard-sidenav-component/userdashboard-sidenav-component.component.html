@@ -1,0 +1,31 @@
+<div class="row" style="margin-top: 10px; ">
+    <div class="col-md-4" style="margin-top: 10px;  ">
+        <div class="" style="margin-top: 10px; ">
+            <a class="logo-wrapper waves-effect">
+                <img src="../../../../assets/images/img.jpg" class="img-fluid" style="border-radius: 100%" alt="">
+            </a>
+
+
+            <div class="list-group list-group-flush">
+
+                <a routerLink="profile" (click)="location()" routerLinkActive="active" class="list-group-item list-group-item-action waves-effect">
+                        <i class="fa fa-user mr-3"></i>My Profile</a>
+
+                <a routerLink="changepassword" routerLinkActive="active" class="list-group-item list-group-item-action waves-effect">
+                            <i class="fa fa-edit mr-3"></i>Change Password</a>
+
+                <a routerLink="editProfile" routerLinkActive="active" class="list-group-item list-group-item-action waves-effect">
+                                <i class="fa fa-edit mr-3"></i>Edit Profile</a>
+                <a routerLink="bookingHistory" routerLinkActive="active" class="list-group-item list-group-item-action waves-effect">
+                 <i class="fa fa-pie-chart mr-3"></i>Booking History</a>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="col-md-6" style="margin-top: 10px;">
+        <router-outlet></router-outlet>
+    </div>
+
+
+</div>

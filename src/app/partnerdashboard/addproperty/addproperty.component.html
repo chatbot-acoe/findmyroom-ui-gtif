@@ -1,0 +1,323 @@
+<ngx-spinner bdColor="rgba(255,255,255, 0.8)" size="large" color="#008b8b" type="ball-beat">
+        <p>loading please wait....</p>
+</ngx-spinner>
+
+<nav aria-label="breadcrumb" style="padding-top: 5%;">
+  <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/partnerdashboard/profile">profile</a></li>
+      <li class="breadcrumb-item"><a routerLink="/partnerdashboard/editprofile">editprofile</a></li>
+      <li class="breadcrumb-item"><a routerLink="/partnerdashboard/changepassword">changepassword</a></li>
+      <li class="breadcrumb-item"><a routerLink="/partnerdashboard/editproperty">updateproperty</a></li>
+
+  </ol>
+</nav>
+<div class="container" style="margin-top:5%;">
+  <p-tabView>
+      <p-tabPanel header="Flat">
+          <form [formGroup]="addForm" (ngSubmit)="submit()" style="margin-left: 5%">
+              <div class="row">
+                  <div class="col-25">
+                      <label for="flatname">&nbsp; FlatName :</label>
+                  </div>
+                  <div class="col-75">
+                      <input type="text" id="flatname"  formControlName="flatname" required>
+                      <div class="errors" *ngIf="addForm.get('flatname').touched && addForm.get('flatname').hasError('required')">This field is required!</div>
+                      <div class="errors" *ngIf="addForm.get('flatname').touched && addForm.get('flatname').hasError('pattern')">should contain only alphabets</div>
+                    </div>
+              </div>
+              <div class="row">
+                  <div class="col-25">
+                      <label for="Address">&nbsp; Location :</label>
+                  </div>
+                  <div class="col-75">
+                      <input type="text"   placeholder="location" formControlName="location" >
+                      <div class="errors" *ngIf="addForm.get('flatname').touched && addForm.get('location').hasError('required')">This field is required!</div>
+                      <div class="errors" *ngIf="addForm.get('flatname').touched && addForm.get('location').hasError('pattern')">should contain only alphabets</div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-25">
+                      <label for="city">&nbsp;City :</label>
+                  </div>
+                  <div class="col-75">
+                      <select id="city"   formControlName="city">
+                            <option value="" disabled selected>Select City</option>
+                              <option value="bangalore">bangalore</option>
+                              <option value="chennai">chennai</option>
+                              <option value="Mumbai">Mumbai</option>
+                              <option value="Delhi">Delhi</option>
+                              <option value="kolkata">kolkata</option>
+
+                            </select>
+                            <div class="errors" *ngIf="addForm.get('city').touched && addForm.get('city').hasError('required')">This field is required!</div>
+                  </div>
+              </div>
+              <div class="row">
+                    <div class="col-25">
+                        <label for="city">&nbsp;purpose :</label>
+                    </div>
+                    <div class="col-75">
+                            <div class="form-check">
+
+                                    <input type="radio" class="form-check-input" id="materialGroupExample1" value="buy" name="purpose" style="margin-bottom:-12px" checked formControlName="purpose">
+                                    <label class="form-check-label" for="materialGroupExample1">Buy</label>&nbsp;&nbsp;
+                                    <input type="radio" class="form-check-input" id="materialGroupExample2" value="rent"  name="purpose"  style="margin-top:10px" formControlName="purpose">
+                                    <label class="form-check-label" for="materialGroupExample2">Rent</label>
+                                    <div class="errors" *ngIf="addForm.get('purpose').touched && addForm.get('purpose').hasError('required')">This field is required!</div>
+                                </div>
+                    </div>
+                </div>
+              <div class="row">
+                  <div class="col-25">
+                      <label for="Description">&nbsp;Description :</label>
+                  </div>
+                  <div class="col-75">
+                      <textarea id="Description" placeholder="Write Description" style="height:60px" formControlName="Description"></textarea>
+                      <div class="errors" *ngIf="addForm.get('Description').touched && addForm.get('Description').hasError('required')">This field is required!</div>
+                  </div>
+              </div>
+
+              <div class="row">
+                  <div class="col-25">
+                      <label for="Type of Flat">&nbsp;Type of Flat :</label>
+                  </div>
+                  <div class="col-75">
+                      <!-- Group of material radios - option 1 -->
+
+
+                      <div class="form-check">
+
+                          <input type="radio" class="form-check-input" id="materialGroupExample1" value="Furnished"  name="furnish" style="margin-bottom:-12px" checked formControlName="furnish">
+                          <label class="form-check-label" for="materialGroupExample1">Furnished</label>&nbsp;&nbsp;
+                          <input type="radio" class="form-check-input" id="materialGroupExample2" value="SemiFurnished"  name="furnish"  style="margin-top:10px" formControlName="furnish">
+                          <label class="form-check-label" for="materialGroupExample2">SemiFurnished</label>
+                          <div class="errors" *ngIf="addForm.get('furnish').touched && addForm.get('furnish').hasError('required')">This field is required!</div>
+                      </div>
+
+
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-25">
+                      <label for="No of Rooms">&nbsp;No of Rooms :</label>
+                  </div>
+                  <div class="col-75">
+
+
+
+                      <div class="form-check">
+                            <input type="radio" class="form-check-input" id="materialGroupExample1" value="1BHK"  style="margin-bottom:-12px" formControlName="rooms" checked>
+                            <label class="form-check-label" for="materialGroupExample1">1BHK</label>&nbsp;&nbsp;
+                          <input type="radio" class="form-check-input" id="materialGroupExample2" value="2BHK" name="rooms"  style="margin-top:10px" formControlName="rooms">
+                          <label class="form-check-label" for="materialGroupExample2">2BHK</label>
+                          <div class="errors" *ngIf="addForm.get('rooms').touched && addForm.get('rooms').hasError('required')">This field is required!</div>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                    <div class="col-25">
+                        <label for="No of Rooms">&nbsp;Availability:</label>
+                    </div>
+                    <div class="col-75">
+
+
+
+                        <div class="form-check">
+                                <input type="radio" class="form-check-input" id="materialGroupExample1" value="true"  name="available" style="margin-bottom:-12px" checked formControlName="available">
+                                <label class="form-check-label" for="materialGroupExample1">Available</label>&nbsp;&nbsp;
+                            <input type="radio" class="form-check-input" id="materialGroupExample2" value="false" name="available"  style="margin-top:10px" formControlName="available">
+                            <label class="form-check-label" for="materialGroupExample2">NotAvailable</label>
+                            <div class="errors" *ngIf="addForm.get('available').touched && addForm.get('available').hasError('required')">This field is required!</div>
+                        </div>
+                    </div>
+                </div>
+              <div class="row">
+                  <div class="col-25">
+                      <label for="Price">&nbsp;Price :</label>
+                  </div>
+                  <div class="col-75" margin-left=10%>
+                      <input type="text" id="Price" formControlName="Price">
+                      <div class="errors" *ngIf="addForm.get('Price').touched && addForm.get('Price').hasError('required')">This field is required!</div>
+            <div class="errors" *ngIf="addForm.get('Price').touched &&addForm.get('Price').hasError('pattern')">should be of digit and should not start with 0</div>
+                  </div>
+              </div>
+              <div class="row">
+                    <div class="col-25">
+                        <label for="Address">&nbsp; Flat Area :</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" placeholder="Flat area" formControlName="area">
+                        <div class="errors" *ngIf="addForm.get('area').touched && addForm.get('area').hasError('required')">This field is required!</div>
+                        <div class="errors" *ngIf="addForm.get('area').touched && addForm.get('area').hasError('pattern')">should have alphabets and numbers only</div>
+                    </div>
+                </div>
+              <div class="row">
+                    <div class="col-25">
+                        <label for="Address">&nbsp;Postal code :</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text"   placeholder="pincode" formControlName="pincode" maxlength="6">
+                        <div class="errors" *ngIf="addForm.get('pincode').touched && addForm.get('pincode').hasError('required')">This field is required!</div>
+                        <div class="errors" *ngIf="addForm.get('pincode').touched && addForm.get('pincode').hasError('pattern')">should be of lenght 6</div>
+                    </div>
+                </div>
+              <div class="row">
+                  <div class="col-25">
+                      <label for="Photos of Property">&nbsp;Photos of Property :</label>
+                  </div>
+                  <div class="col-75">
+                        <div>
+
+                               <label >
+                                 <input type="file" (change)="selectFile($event)" accept="image/*"><br>
+                                 <input type="file" (change)="selectFile2($event)" accept="image/*"><br>
+                                 <input type="file" (change)="selectFile3($event)" accept="image/*"><br>
+                                 <input type="file" (change)="selectFile4($event)" accept="image/*"><br>
+                                 <input type="file" (change)="selectFile5($event)" accept="image/*"><br>
+                                   </label>
+
+
+                             </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <button type="submit" [disabled]='!addForm.valid||!enable' class="btn btn-primary">submit</button>
+                  <button type='reset' class="btn btn-primary">cancel</button>
+              </div>
+          </form>
+      </p-tabPanel>
+      <p-tabPanel header="PG">
+          <form [formGroup]="addpgForm" style="margin-left: 5%">
+              <div class="row">
+                  <div class="col-25">
+                    <label for="pgname">&nbsp; PG-Name :</label>
+                  </div>
+                <div class="col-75">
+                    <input type="text" id="pgname"  formControlName="pgname" maxlength="100" required>
+                    <div class="errors" *ngIf="addpgForm.get('pgname').touched && addpgForm.get('pgname').hasError('required')">This field is required!</div>
+                    <div class="errors" *ngIf="addpgForm.get('pgname').touched && addpgForm.get('pgname').hasError('pattern')">should contain only alphabets</div>
+                  </div>
+
+              </div>
+              <div class="row">
+                  <div class="col-25">
+                      <label for="location">Location :</label>
+                  </div>
+                  <div class="col-75">
+                    <input type="text" id="location" placeholder="Enter location in the city" formControlName="location" maxlength="50">
+                    <div class="errors" *ngIf="addpgForm.get('location').touched && addpgForm.get('location').hasError('required')">This field is required!</div>
+                    <div class="errors" *ngIf="addpgForm.get('location').touched && addpgForm.get('location').hasError('pattern')">should contain only alphabets</div>
+                </div>
+
+              </div>
+              <div class="row">
+                <div class="col-25">
+                    <label for="city">&nbsp;City :</label>
+                </div>
+                <div class="col-75">
+                    <select id="city"   formControlName="city">
+                          <option value="" disabled selected>Select City</option>
+                            <option value="bangalore">bangalore</option>
+                            <option value="chennai">chennai</option>
+                            <option value="mumbai">Mumbai</option>
+                            <option value="delhi">Delhi</option>
+                            <option value="kolkata">kolkata</option>
+
+                          </select>
+                          <div class="errors" *ngIf="addpgForm.get('city').touched && addpgForm.get('city').hasError('required')">This field is required!</div>
+                </div>
+              </div>
+              <div class="row">
+                  <div class="col-25">
+                    <label for="Description">&nbsp;Description :</label>
+                </div>
+                <div class="col-75">
+                    <textarea id="Description" placeholder="Write breif description of PG" style="height:120px" formControlName="Description" maxlength="255"></textarea>
+                    <div class="errors" *ngIf="addpgForm.get('Description').touched && addpgForm.get('Description').hasError('required')">This field is required!</div>
+                </div>
+
+              </div>
+              <div class="row">
+                  <div class="col-25">
+                      <label for="Typeofrooms">Type of Rooms Available :</label>
+                  </div>
+                  <div class="col-75">
+                      <div class="form-check">
+                          <input type="radio" class="form-uncheck-input" id="materialGroupExample1" (change)="onOne()" value="1Sharing" name="Typeofrooms" formControlName="Typeofrooms" style="margin-bottom:-12px">
+                          <label class="form-check-label" for="materialGroupExample1" >1Sharing</label><br>
+                          <input type="radio" (change)="onTwo()" class="form-uncheck-input" id="materialGroupExample2" value="2Sharing" name="Typeofrooms" formControlName="Typeofrooms" style="margin-top:10px">
+                          <label class="form-check-label" for="materialGroupExample2" >2Sharing</label>
+                          <div class="errors" *ngIf="addpgForm.get('Typeofrooms').touched && addpgForm.get('Typeofrooms').hasError('required')">This field is required!</div>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-25">
+                      <label for="Price">Price / Bed ( in Rupees ) :</label>
+                  </div>
+                  <div class="col-75">
+                      <input type="text" id="Price" formControlName="Price" name="Price" maxlength="6">
+                      <div class="errors" *ngIf="addpgForm.get('Price').touched && addpgForm.get('Price').hasError('required')">This field is required!</div>
+                      <div class="errors" *ngIf="addpgForm.get('Price').touched && addpgForm.get('Price').hasError('pattern')">should be of digit</div>
+                  </div>
+              </div>
+              <div class="row">
+                    <div class="col-25">
+                        <label for="postalcode">PostalCode :</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" id="postalcode" formControlName="postalcode" name="postalcode" maxlength="6">
+                        <div class="errors" *ngIf="addpgForm.get('postalcode').touched && addpgForm.get('postalcode').hasError('required')">This field is required!</div>
+                        <div class="errors" *ngIf="addpgForm.get('postalcode').touched && addpgForm.get('postalcode').hasError('pattern')">should be of lenght 6</div>
+                    </div>
+                </div>
+                <span *ngIf="one">
+                  <div class="row" >
+                        <div class="col-25">
+                            <label for="oneSharingBeds">No of one sharing beds vacant :</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" id="oneSharingBeds" formControlName="SharingBeds" maxlength="4" required="false">
+                            <div class="errors" *ngIf="addpgForm.get('SharingBeds').touched && addpgForm.get('SharingBeds').hasError('pattern')">should be valid</div>
+                        </div>
+
+                    </div>
+                  </span>
+                  <span *ngIf="two">
+                    <div class="row" >
+
+                            <div class="col-25">
+                                <label for="twoSahringBeds">No of two sharing beds vacant :</label>
+                            </div>
+                            <div class="col-75">
+                                <input type="text" id="twoSahringBeds"  formControlName="SharingBeds" maxlength="4" required="false">
+                                <div class="errors" *ngIf="addpgForm.get('SharingBeds').touched && addpgForm.get('SharingBeds').hasError('pattern')">should be valid</div>
+                            </div>
+
+                        </div>
+                      </span>
+              <div class="row">
+                  <div class="col-25">
+                      <label for="Photos of Property">Photos of Property :</label>
+                  </div>
+                  <div class="col-75">
+                      <div>
+                          <label>
+                        <input type="file" (change)="selectFile($event)" accept="image/*"/>
+                        <input type="file" (change)="selectFile2($event)" accept="image/*"/>
+                        <input type="file" (change)="selectFile3($event)" accept="image/*"/>
+                        <input type="file" (change)="selectFile4($event)" accept="image/*"/>
+                        <input type="file" (change)="selectFile5($event)" accept="image/*"/>
+                          </label>
+                        <button class="btn btn-secondary" [disabled]="!(f1 && f2 && f3 && f4 && f5)" (click)="upload()">Upload</button>
+                        {{property}}
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                    <button type="submit" [disabled]='!addpgForm.valid || !uploadpic ' (click)="submitpg()" class="btn btn-primary">submit</button>
+                    <button type='reset' class="btn btn-danger">cancel</button>
+                </div>
+          </form>
+      </p-tabPanel>
+  </p-tabView>

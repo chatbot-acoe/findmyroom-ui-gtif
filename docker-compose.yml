@@ -1,0 +1,24 @@
+version: "2.0"
+services:
+  mysql-service:
+    image: mysql:5.7
+    container_name: mysql-service
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=Welcome123
+  fmr-service:
+    image: sayanta/find-my-room-service:latest
+    container_name: fmr-service
+    restart: on-failure
+    ports:
+      - "8096:8080"
+    depends_on:
+      - mysql-service
+  fmr-ui:
+    image: sayanta/find-my-room-ui:latest
+    restart: always
+    container_name: fmr-ui
+    ports:
+      - "8076:80"
+    depends_on:
+      - fmr-service

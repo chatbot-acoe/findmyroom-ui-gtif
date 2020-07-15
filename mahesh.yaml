@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: frontend1
+  labels:
+    app: sample-angular
+    tier: frontend1
+spec:
+  # modify replicas according to your case
+  replicas: 3
+  selector:
+    matchLabels:
+      tier: frontend1
+  template:
+    metadata:
+      labels:
+        tier: frontend1
+    spec:
+      containers:
+      - name: myangular
+        image: mahesh-angular

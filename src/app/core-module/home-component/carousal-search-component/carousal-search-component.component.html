@@ -1,0 +1,82 @@
+<!--Carousel Wrapper-->
+<div class="banner" style="background-image: url('../../../assets/img/new carousel.jpg');">
+  <div class="mask rgba-black-strong d-flex justify-content-center align-items-center" style="height: 100%">
+
+    <!-- Content -->
+    <div class="text-center white-text mx-5 wow fadeIn">
+      <h1 class="mb-4">
+
+      </h1>
+
+      <p>
+        <strong>Best website for booking Flats and PG</strong>
+      </p>
+
+      <div class="masthead  text-nude text-center">
+        <form class="form-inline" #searchForm="ngForm">
+          <div class="container">
+            <div class="btn-group ">
+              <label mdbBtn color="default" mdbRadio="Rent" mdWavesEffect (click)="rent()" ngModel name="purpose">
+                Rent</label>
+              <label mdbBtn color="default" mdbRadio="buy" mdWavesEffect (click)="buy()" ngModel name="purpose">
+                    Buy</label>
+              <!-- <label mdbBtn color="default" mdbRadio="Book" mdWavesEffect (click)="book()" ngModel name="purpose">
+                        Book</label> -->
+              
+            </div>
+            <br>
+          <div class="masthead  text-nude text-center">
+              
+            <div class="md-form my-2 row">
+              <select ngModel name="city" class="form-control col-3"  searchable="Search here.." style="color:white; background-color: #3B3737; font-size: 22px">
+                                <option value="" disabled selected>Select City</option>
+                                <option value="chennai" >Chennai</option>
+                                <option value="bangalore"  >Bangalore</option>
+                                <option value="kolkata"  >Kolkata</option>
+                                <option value="mumbai"  >Mumbai</option>
+                                <option value="delhi"  >Delhi</option>
+                              </select>
+
+                <input class="form-control col-6" type="text" ngModel name="search" placeholder="Enter the location in the city.." aria-label="Search"
+                  style="margin-left:2%;color: white; font-style: oblique;font-size: 25px">
+                <button class="btn cyan btn-rounded col-2" type="submit" (click)="search(searchForm.value) "><i class="fa fa-search" aria-hidden="true"></i></button>
+              </div>
+
+            </div>
+            
+              <span *ngIf=" r"> 
+                  <div class="btn-group "> 
+                  <label mdbBtn color="default" mdbRadio="flat" mdWavesEffect ngModel name="category">
+                      Flat</label>
+                      <label mdbBtn color="default" mdbRadio="pg" mdWavesEffect ngModel name="category">
+                          PG</label>
+                  </div>
+              </span>
+              <span *ngIf="b"> 
+                  <div class="btn-group "> 
+                      <label mdbBtn color="default" mdbRadio="flat" mdWavesEffect ngModel name="category">
+                          Flat</label>
+                  </div></span>
+              <!-- <span *ngIf="h"> 
+                  <div class="btn-group "> 
+                  <label mdbBtn color="default" mdbRadio="hotel" mdWavesEffect ngModel name="category" >
+                      Hotel</label>
+                  </div></span> -->
+
+            
+
+
+            <hr class="star-light">
+            <h2 class="font-weight-light mb-0" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS'">Buy Rent Sell search for Pg and Flat at one stop</h2>
+
+          </div>
+        </form>
+
+      </div>
+
+    </div>
+    <!-- Content -->
+
+  </div>
+
+</div>

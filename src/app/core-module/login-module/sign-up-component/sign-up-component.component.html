@@ -1,0 +1,159 @@
+<ngx-spinner bdColor="rgba(255,255,255, 0.8)" size="large" color="#008b8b" type="ball-beat">
+    <p>loading please wait....</p>
+</ngx-spinner>
+
+<div class="modal fade" id="signupform" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content card card-image">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold" style="color: darkcyan;">Sign up<span style="color: red;font-size: 10px;margin-left: 390px;">* Mandatory Field</span></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="md-form">
+                    <form [formGroup]="signupForm" (ngSubmit)="Signup()">
+
+                        <div class="row" style="margin-left: 20px;">
+                            <div class="col-md-4 col-12" style="margin-bottom: 20px;">
+                                <label for="signupForm" style="color: black;font-weight: 420;">User Type<span style="color: red">*</span></label>
+                            </div>
+
+                            <div class="col-md-4 col-12">
+                                    <!-- Default checked -->
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" class="custom-control-input" id="defaultChecked" name="userType" formControlName="userType" value="customer" [checked]=true mdbInputDirective>
+                                        <label class="custom-control-label" style="color: black;font-weight: 420;" for="defaultChecked">Customer</label>
+                                    </div>
+                            </div>
+                            <div class="col-md-4 col-12">
+                                <!-- Default unchecked -->
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" class="custom-control-input" id="defaultUnchecked" name="userType" formControlName="userType" value="partner" mdbInputDirective>
+                                    <label class="custom-control-label" style="color: black;font-weight: 420;" for="defaultUnchecked">Partner</label>
+                                </div>
+                            </div>
+
+                        </div>
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="md-form">
+                                    <!-- <i class="fa fa-id-card" aria-hidden="true"></i> -->
+                                    <input mdbInputDirective type="text" id="fName" formControlName="userFirstName" class="form-control">
+                                    <label for="fName" style="color: black;font-weight: 420;">First Name<span style="color: red">*</span></label>
+                                    <div class="errors" *ngIf="signupForm.get('userFirstName').touched && signupForm.get('userFirstName').hasError('required')">This field is required!</div>
+                                    <div class="errors" *ngIf="signupForm.get('userFirstName').touched && signupForm.get('userFirstName').hasError('pattern')">Alllowed alphabetic Characters</div>
+                                    <div class="errors" *ngIf="signupForm.get('userFirstName').touched && signupForm.get('userFirstName').hasError('maxlength')">Alllowed 50 Characters</div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="md-form">
+                                    <!-- <i class="fa fa-id-card" aria-hidden="true"></i> -->
+                                    <input mdbInputDirective type="text" id="lName" formControlName="userLastName" class="form-control">
+                                    <label for="lName" style="color: black;font-weight: 420;">Last Name</label>
+                                    <div class="errors" *ngIf="signupForm.get('userLastName').touched && signupForm.get('userLastName').hasError('pattern')">Alllowed alphabetic Characters</div>
+                                    <div class="errors" *ngIf="signupForm.get('userLastName').touched && signupForm.get('userLastName').hasError('maxlength')">Alllowed atmost 50 characters</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="md-form">
+                                    <!-- <i class="fa fa-lock" aria-hidden="true"></i> -->
+                                    <input mdbInputDirective type="text" id="uEmail" formControlName="userEmail" class="form-control">
+                                    <label for="uEmail" style="color: black;font-weight: 420;">Email<span style="color: red">*</span></label>
+                                    <div class="errors" *ngIf="signupForm.get('userEmail').touched && signupForm.get('userEmail').hasError('required')">This field is required!</div>
+                                    <div class="errors" *ngIf="signupForm.get('userEmail').touched && signupForm.get('userEmail').hasError('pattern')">Email must follow name@domain.com</div>
+                                    <div class="errors" *ngIf="signupForm.get('userEmail').touched && signupForm.get('userEmail').hasError('maxlength')">Alllowed atmost 255 characters</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="md-form">
+                                    <!-- <i class="fa fa-lock" aria-hidden="true"></i> -->
+                                    <input mdbInputDirective type="password" id="uPassword" formControlName="userPassword" class="form-control" minlength="6" maxlength="15">
+                                    <label for="uPassword" style="color: black;font-weight: 420;">Password<span style="color: red">*</span></label>
+                                    <div class="errors" *ngIf="signupForm.get('userPassword').touched && signupForm.get('userPassword').hasError('required')">This field is required!</div>
+                                    <div class="errors" *ngIf="signupForm.get('userPassword').touched && signupForm.get('userPassword').hasError('pattern')">Password should contain a (a-z,0-9,A-Z) min(6) max(15) allowed(@$!%*#?)!</div>
+                                    <div class="errors" *ngIf="signupForm.get('userPassword').touched && signupForm.get('userPassword').hasError('minlength')">Password min(6)</div>
+                                    <div class="errors" *ngIf="signupForm.get('userPassword').touched && signupForm.get('userPassword').hasError('maxlength')">Password max(15)</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="md-form">
+                                    <!-- <i class="fa fa-lock" aria-hidden="true"></i> -->
+                                    <input mdbInputDirective type="password" id="uConfirm" formControlName="userConfirmPassword" class="form-control" minlength="6" maxlength="15">
+                                    <label for="uConfirm" style="color: black;font-weight: 420;">Confirm Password<span style="color: red">*</span></label>
+                                    <div class="errors" *ngIf="signupForm.get('userConfirmPassword').touched && signupForm.get('userConfirmPassword').hasError('required')">This field is required!</div>
+                                    <div class="errors" *ngIf="signupForm.get('userConfirmPassword').touched && signupForm.get('userConfirmPassword').hasError('mustMatch')">Password must match</div>
+                                    <div class="errors" *ngIf="signupForm.get('userConfirmPassword').touched && signupForm.get('userConfirmPassword').hasError('pattern')">Password should contain a (a-z,0-9,A-Z) min(6) max(15) allowed(@$!%*#?)!</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="md-form">
+                                    <!-- <i class="fa fa-mobile" aria-hidden="true"></i> -->
+                                    <input mdbInputDirective type="text" id="uPhone" formControlName="userPhone" class="form-control" maxlength="10">
+                                    <label for="uPhone" style="color: black;font-weight: 420;">Phone<span style="color: red">*</span></label>
+                                    <div class="errors" *ngIf="signupForm.get('userPhone').touched && signupForm.get('userPhone').hasError('required')">This field is required!</div>
+                                    <div class="errors" *ngIf="signupForm.get('userPhone').touched && signupForm.get('userPhone').hasError('pattern')">Enter Valid Phone Number max(10)</div>
+                                    <div class="errors" *ngIf="signupForm.get('userPhone').touched && signupForm.get('userPhone').hasError('maxlength')">Enter Valid Phone Number max(10)</div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="md-form">
+                                    <!-- <i class="fa fa-address-card" aria-hidden="true"></i> -->
+                                    <input mdbInputDirective type="text" id="uCity" formControlName="userCity" class="form-control">
+                                    <label for="uCity" style="color: black;font-weight: 420;">City<span style="color: red">*</span></label>
+                                    <div class="errors" *ngIf="signupForm.get('userCity').touched && signupForm.get('userCity').hasError('required')">This field is required</div>
+                                    <div class="errors" *ngIf="signupForm.get('userCity').touched && signupForm.get('userCity').hasError('pattern')">Allowed alphabetic Characters</div>
+                                    <div class="errors" *ngIf="signupForm.get('userCity').touched && signupForm.get('userCity').hasError('minlength')">City name should have minimum length 3</div>
+                                    <div class="errors" *ngIf="signupForm.get('userCity').touched && signupForm.get('userCity').hasError('maxlength')">City name should have maximum length 50</div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="md-form">
+                                    <!-- <i class="fa fa-address-card" aria-hidden="true"></i> -->
+                                    <input mdbInputDirective type="text" id="uStreet" formControlName="userStreet" class="form-control">
+                                    <label for="uStreet" style="color: black;font-weight: 420;">Street<span style="color: red">*</span></label>
+                                    <div class="errors" *ngIf="signupForm.get('userStreet').touched && signupForm.get('userStreet').hasError('required')">This field is required!</div>
+                                    <div class="errors" *ngIf="signupForm.get('userStreet').touched && signupForm.get('userStreet').hasError('pattern')">Give a valid street name (Notallowed:special characters and multiple spaces)</div>
+                                    <div class="errors" *ngIf="signupForm.get('userStreet').touched && signupForm.get('userStreet').hasError('maxlength')">Street name should have maximum length 50</div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="md-form">
+                                    <!-- <i class="fa fa-map-pin" aria-hidden="true"></i> -->
+                                    <input mdbInputDirective type="text" id="uPostal" formControlName="userPostalCode" class="form-control">
+                                    <label for="uPostal" style="color: black;font-weight: 420;">Postal Code<span style="color: red">*</span></label>
+                                    <div class="errors" *ngIf="signupForm.get('userPostalCode').touched && signupForm.get('userPostalCode').hasError('required')">This field is required!</div>
+                                    <div class="errors" *ngIf="signupForm.get('userPostalCode').touched && signupForm.get('userPostalCode').hasError('pattern')">Enter Valid Pincode</div>
+                                    <div class="errors" *ngIf="signupForm.get('userPostalCode').touched && signupForm.get('userPostalCode').hasError('maxlength')">Enter Valid Pincode not starting with 0</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer" style="margin-top: 40px;">
+                            <div class="col-md-4">
+                                <button style="float: right" mdbBtn color="info" [disabled]='!signupForm.valid' class="btn btn-default" block="true" type="submit">Sign up</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
