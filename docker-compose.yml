@@ -1,20 +1,20 @@
 version: "2.0"
 services:
-  mysql:
+  mysql-service:
     image: mysql:5.7
-    container_name: mysql
+    container_name: mysql-service
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=Welcome123
-  web-service:
+  fmr-service:
     image: sayanta/find-my-room-service:latest
-    container_name: web-service
+    container_name: fmr-service
     restart: on-failure
     ports:
       - "8089:8080"
     depends_on:
-      - mysql
-  ui-service:
+      - mysql-service
+  fmr-ui:
     build:
       context: ./
       dockerfile: Dockerfile
@@ -22,5 +22,4 @@ services:
     ports:
       - "8088:80"
     depends_on:
-      - web-service
-
+      - fmr-service
