@@ -6,9 +6,8 @@ services:
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=Welcome123
-      - MYSQL_DATABASE=hotel
   web-service:
-    image: findmyroombackend:v
+    image: sayanta/find-my-room-service:latest
     container_name: web-service
     restart: on-failure
     ports:
