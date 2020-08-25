@@ -15,11 +15,10 @@ services:
     depends_on:
       - mysql-service
   fmr-ui:
-    build:
-      context: ./
-      dockerfile: Dockerfile
+    image: findmyroomui:v
+    container_name: fmr-ui
     restart: always
     ports:
-      - "8088:80"
+      - "8097:80"
     depends_on:
       - fmr-service
