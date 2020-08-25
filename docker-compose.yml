@@ -1,8 +1,8 @@
 version: "2.0"
 services:
-  mysql-servicee:
+  mysql-service:
     image: mysql:5.7
-    container_name: mysql-servicee
+    container_name: mysql-service
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=Welcome123
@@ -13,7 +13,7 @@ services:
     ports:
       - "8089:8080"
     depends_on:
-      - mysql-servicee
+      - mysql-service
   fmr-ui:
     build:
       context: ./
